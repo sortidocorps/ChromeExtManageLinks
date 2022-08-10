@@ -5,9 +5,31 @@
   "version": "0.1.0",
   "action": {
     "default_title": "Click Me",
-    "default_popup": "popup.html" 
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "bookmarks",
+    "webNavigation",
+    "activeTab",
+    "tabs",
+    "scripting"
+  ],
+  "commands": {
+    "run-foo": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U",
+        "mac": "Command+Shift+U"
+      },
+      "description": "My first command"
+    },
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U",
+        "mac": "Command+Shift+U"
+      }
+    }
   }
-  // "background": {
-  //     "service_worker":"background.js"
-  // }
 }
