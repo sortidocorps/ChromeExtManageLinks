@@ -18,17 +18,31 @@
     "scripting"
   ],
   "commands": {
-    "run-foo": {
+    "cool-link": {
       "suggested_key": {
-        "default": "Ctrl+Shift+U",
-        "mac": "Command+Shift+U"
+        "default": "Alt+H",
+        "mac": "Alt+U"
       },
-      "description": "My first command"
+      "description": "Put link on cool folder"
+    },
+    "awesome-link": {
+      "suggested_key": {
+        "default": "Alt+A",
+        "mac": "Alt+J"
+      },
+      "description": "Put link on hot folder"
+    },
+    "ok-link": {
+      "suggested_key": {
+        "default": "Alt+O",
+        "mac": "Alt+O"
+      },
+      "description": "Put link on hot folder"
     },
     "_execute_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+U",
-        "mac": "Command+Shift+U"
+        "default": "Alt+H",
+        "mac": "Alt+H"
       }
     }
   }
