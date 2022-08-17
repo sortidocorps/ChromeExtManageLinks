@@ -17,18 +17,19 @@
     "tabs",
     "scripting"
   ],
+  "host_permissions": ["<all_urls>"],
   "commands": {
-    "hot-link": {
+    "cool-link": {
       "suggested_key": {
         "default": "Alt+H",
-        "mac": "Alt+U"
+        "mac": "Alt+H"
       },
-      "description": "Put link on hot folder"
+      "description": "Put link on cool folder"
     },
     "awesome-link": {
       "suggested_key": {
         "default": "Alt+A",
-        "mac": "Alt+J"
+        "mac": "Alt+A"
       },
       "description": "Put link on hot folder"
     },
@@ -39,6 +40,7 @@
       },
       "description": "Put link on hot folder"
     },
+    
     "_execute_action": {
       "suggested_key": {
         "default": "Alt+H",

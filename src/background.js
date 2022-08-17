@@ -1,4 +1,4 @@
-console.log("test");
+console.log("Manage links start");
 
 chrome.commands.onCommand.addListener(async (command) => {
   console.log(`Command "${command}" triggered`);
@@ -19,54 +19,53 @@ chrome.commands.onCommand.addListener(async (command) => {
     default:
       console.log(`${command} not found`);
   }
+
+  //   chrome.scripting.executeScript({
+  //     file: "content.js",
+  //   });
 });
+
+// chrome.action.onClicked.addListener(function (tab) {
+//   chrome.scripting.executeScript({
+//     files: ["content.js"],
+//     target: { tabId: tab.id },
+//   });
+// });
+
+// document.getElementsById("create-folders-id").addEventListener("click", () => {
+//   const folderNames = ["awesome", "cool", "ok"];
+//   createFolderLinks(folderNames);
+// });
+
+// createFolderLinks = (folderNames) => {
+//   for (folderName of folderNames) {
+//     chrome.bookmarks.create({
+//       title: folderName,
+//     });
+//   }
+// };
 
 managedLink = (name) => {
   chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
     let currentTab = tabs[0];
     // console.log(`tab "${currentTab}" triggered`);
 
-    chrome.bookmarks.getTree(function (bookmarks) {
-      var bookmark = findBookmarks(bookmarks);
-      console.log(
-        `bookmark choose "${bookmark.title} ${bookmark.id}" triggered`
-      );
-      if (!bookmark) {
-        console.log(`Folder bookmark not found: "${name}" `);
-        chrome.bookmarks.create(
-          {
-            title: name,
-          },
-          (newFolder) => {
-            console.log(
-              `added folder: "${newFolder.title}" triggered, "${currentTab.title}"`
-            );
-            chrome.bookmarks.create({
-              parentId: newFolder.id,
-              title: currentTab.title,
-              url: currentTab.url,
-            });
-          }
-        );
-      }
+    chrome.bookmarks.getTree(async (bookmarks) => {
+      createBookmarksInGoodFolder(bookmarks);
     });
 
-    function findBookmarks(bookmarks) {
-      return bookmarks.forEach(function (bookmark) {
+    function createBookmarksInGoodFolder(bookmarks) {
+      for (bookmark of bookmarks) {
         if (bookmark.title === name) {
-          console.log(`bookmarkId "${bookmark.title} ${bookmark.id}" `);
-
-          var createBookmark = chrome.bookmarks.create({
+          chrome.bookmarks.create({
             parentId: bookmark.id,
             title: currentTab.title,
             url: currentTab.url,
           });
-
-          return createBookmark;
         } else if (bookmark.children) {
-          findBookmarks(bookmark.children);
+          createBookmarksInGoodFolder(bookmark.children);
         }
-      });
+      }
     }
 
     // For more after bookmark created.

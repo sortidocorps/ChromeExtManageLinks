@@ -12,6 +12,6 @@
   "scripts": {
     "prebuild": "rm -rf dist .cache .parcel-cache",
     "build:css": "npx tailwindcss -i ./src/style.css -o ./dist/style.css",
-    "build": "npm run build:css && cp 'src/manifest.json' 'dist/' && cp 'src/popup.html' 'dist/' && cp 'src/background.js' 'dist/' "
+    "build": "npm run build:css && cp 'src/manifest.json' 'dist/' && cp 'src/popup.html' 'dist/' && cp 'src/background.js' 'dist/' && cp 'src/content.js' 'dist/' "
   }
 }
